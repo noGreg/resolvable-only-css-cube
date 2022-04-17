@@ -1,0 +1,74 @@
+:root {
+    --height: 50px;
+    --width: 50px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#cube {
+    height: var(--height);
+    width: var(--width);
+    margin: 100px auto;
+    transform-style: preserve-3d;
+    transform: perspective(700px) rotateX(-30deg) rotateY(-30deg) scale3d(.5, .5, .5);
+    animation: rotate 3s infinite alternate;
+}
+
+#cube > div {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    height: inherit;
+    width: inherit;
+    position: absolute;
+    opacity: 1;
+    /* opacity: .9; */
+}
+
+#cube > div:nth-child(1) {
+    background: blue;
+    transform: rotateX(90deg) translateZ(calc(var(--height) / 2));
+}
+
+#cube > div:nth-child(2) {
+    background: white;   
+    transform: translateZ(calc(var(--height) / 2));
+}
+
+#cube > div:nth-child(3) {
+    background: yellow;   
+    transform: translateZ(calc(-1 * (var(--height) / 2)));
+}
+
+#cube > div:nth-child(4) {
+    background: red;   
+    transform: rotateY(90deg) translateZ(calc(var(--height) / 2));
+}
+
+#cube > div:nth-child(5) {
+    background: orange;   
+    transform: rotateY(-90deg) translateZ(calc(var(--height) / 2));
+}
+
+#cube > div:nth-child(6) {
+    background: #0f0;   
+    transform: rotateX(-90deg) translateZ(calc(var(--height) / 2));
+}
+
+#cube > div > div {
+    border: 1px solid black;
+}
+
+@keyframes rotate {
+    from { 
+        transform: rotateX(0deg) rotateY(0deg) scale3d(.5, .5, .5); 
+    } to { 
+        transform: rotateX(360deg) rotateY(360deg) scale3d(2, 2, 2); 
+    }
+}
